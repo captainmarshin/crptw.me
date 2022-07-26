@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>crptw.me ⏤ captainmarshin</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="title" content="crptw.me">
+	<meta name="description" content="Easy share link to all yours crypto wallets across the web.">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://crptw.me">
+	<meta property="og:title" content="crptw.me">
+	<meta property="og:description" content="Easy share link to all yours crypto wallets across the web.">
+	<meta property="og:image" content="">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://crptw.me">
+	<meta property="twitter:title" content="crptw.me">
+	<meta property="twitter:description" content="Easy share link to all yours crypto wallets across the web.">
+	<meta property="twitter:image" content="">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+	<link rel="manifest" href="img/site.webmanifest">
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+
+	<script src="js/qrcode.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+	<style type="text/css">
+		
+		html{
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		margin: 0;
+		padding: 0;
+
+		-moz-osx-font-smoothing: grayscale;
+    	-webkit-font-smoothing: antialiased;
+    	-webkit-text-size-adjust: 100%;
+/*		letter-spacing:.35px;*/
+	}
+
+	body{
+		margin: 0;
+		padding: 0;
+		background-color: #fff;
+	}
+
+	a{
+		text-decoration: none;
+	}
+
+	hr{
+		border: 0;
+		height: 1px;
+	}
+
+
+	/* Main Styles */
+
+	.app{
+		width: 320px;
+		margin: 0 auto;
+	}
+
+	.head{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+		background-color: #fcfcfc;
+		border-radius: 0 0 8px 8px;
+
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 3px solid #ddd;
+	}
+
+	.logo{
+		font-weight: bold;
+		font-size: 15px;
+		text-align: center;
+	}
+
+
+	.user-profile{
+		height: auto;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 15px;
+
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: center;
+
+		background-color: #fcfcfc;
+		border-radius: 8px;
+
+		border-top: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 3px solid #ddd;
+	}
+
+	.user-avatar img{
+		width: 60px;
+		height: 60px;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+
+
+	.user-name {
+		margin-top: 5px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.user-share{
+		margin-top: 20px;
+	}
+
+	.user-share:after{
+		content: "";
+	  	display: table;
+	  	clear: both;
+	}
+
+	.user-share-link, .user-share-menu{
+		float: left;
+		width: 50%;
+		color: #aaa;
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	.copy-button:hover, .share-button:hover{
+		cursor: pointer;
+	}
+
+
+	.user-share-link .material-icons{
+		font-size: 15px;
+		vertical-align: -2px;
+	}
+
+	.user-share-menu .material-icons{
+		font-size: 15px;
+		vertical-align: -2px;
+	}
+
+
+	.user-wallets{
+		/*height: auto;
+		width: 100%;*/
+		box-sizing: border-box;
+	}
+
+
+	.user-wallet{
+		height: 50px;
+		display: flex;
+		background-color: #fcfcfc;
+		box-sizing: border-box;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.user-wallet:hover{
+		cursor: pointer;
+		background-color: #eee;
+	}
+
+	.user-wallet:first-child{
+		border-radius: 8px 8px 0 0;
+		border-top: 1px solid #ddd;
+	}
+
+	.last-child{
+		height: 53px;
+		border-radius: 0 0 8px 8px;
+		border-bottom: 3px solid #ddd;
+	}
+
+	.user-wallet:last-child{
+		height: 53px;
+		border-radius: 0 0 8px 8px;
+		border-bottom: 3px solid #ddd;
+	}
+
+	.user-wallet-icon{
+		width: 16%;
+  		box-sizing: border-box;
+  		padding: 10px;
+/*  		border: 1px solid red;*/
+	}
+
+	.user-wallet-icon img{
+		width: 30px;
+		height: 30px; 
+		border-radius: 50%;
+	}
+
+	.user-wallet-name{
+		width: 73%;
+		padding-left: 5px;
+		font-weight: bold;
+		line-height: 50px;
+/*		border: 1px solid red;*/
+	}
+
+	.user-wallet-icn{
+		width: 8%;
+
+	}
+
+	.icn-rotate{
+		margin-top: 2px;
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		transform: rotate(90deg);
+		transition-duration:0.4s;
+	}
+
+	.icn-rotate-zero{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+		transition-duration:0.4s;
+	}
+
+	.user-wallet-icn span{
+		font-size: 18px;
+
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+		transition-duration:0.4s;
+	}
+
+
+	.user-wallet-icn .material-icons {
+    	line-height: 50px;
+	}
+
+
+	.user-wallet-content{
+		height: auto;
+		display: none;
+		padding: 15px;
+		box-sizing: border-box;
+		background-color: #fcfcfc;
+		box-sizing: border-box;
+		border-left: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.user-wallet-content[style*='display: block']{
+    	display: flex !important;
+	}
+
+	.user-wallet-content:last-child{
+		border-radius: 0 0 8px 8px;
+		border-bottom: 3px solid #ddd;
+	}
+
+	.user-wallet-content-data{
+		width: 66%;
+		box-sizing: border-box;
+		padding-right: 20px;
+	}
+
+	.block-title{
+		font-size: 14px;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
+
+	.user-wallet-address { /*.user-wallet-network*/		
+		margin-bottom: 15px;
+	}
+
+	.wallet-address, .wallet-network, .wallet-note{
+		font-size: 15px;
+		overflow-wrap: break-word;
+		font-family: 'Roboto Mono', monospace;
+	}
+
+	.user-wallet-qr{
+		width: 35%;
+	}
+
+	.qrcode{
+		border-radius: 10px;
+		background-color: #fff;
+		border: 1px solid #aaa;
+		width: 80px;
+		height: 80px;
+		padding: 10px;
+	}
+
+	.qrcode-note{
+		box-sizing: border-box;
+		padding: 8px;
+		text-align: center;
+		font-size: 11px;
+		color: #aaa;
+	}
+
+
+	.footer{
+		margin-top: 20px;
+		margin-bottom: 50px;
+		margin-left: auto;
+		margin-right: auto;
+		align-items: center;
+  		justify-content: center;
+		display: flex;
+		padding:5px;
+	}
+
+	.footer-link{
+		box-sizing: border-box;
+		margin: 5px;
+	}
+
+	.footer-link a{
+		color: #aaa;
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+	.footer-link:last-child{
+	}
+
+
+	</style>
+
+	<div class="app">
+
+	<div class="head">
+		<div class="logo">crptw.me</div>
+	</div>
+
+
+	<div class="user-profile">
+		<div class="user-avatar"><img src="https://cdn4.telegram-cdn.org/file/LWRusPAyXlTVDtyaHxvuB3Mtl4e6r6yZ5aWwzVOrxhf-gPdVdOlYp2lA9Y96hWtt_-uAfJxPjTuTn-gg0xU4kv9Q2s04Gxspj38aB6uE1g2QNkxZbq2ZPUBBX3g9_DqujzGy5EpYmdEwr0ApS4OTTTb4ANcRXBsHg5Wm4INWgYVzKFE-yiStAB9r9htHPQGl8HEeWA6q_OYd1eFn7JD98alzKPuchrTkjSg_OgkiRne2V6qGbzo5G1FWwuPlDSwqpOcS93Yx1WTLh01y69LclEzZicXAmQEPY5OR58tnfIRk-xaCDGiPIFztoivH9xQ6Y3Dv8mazCP-S7FCBSVO3Mw.jpg"></div>
+		<div class="user-name">@captainmarshin</div>
+		<div class="user-share">
+			<div class="user-share-link"><span class="copy-button"><span class="material-icons">content_copy</span> Copy link</span></div>
+			<div class="user-share-menu"><span class="share-button"><span class="material-icons">ios_share</span> Share</span></div>
+		</div>
+	</div>
+
+	<div class="user-wallets">
+
+		<div class="user-wallet" data-id="1">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"></div>
+			<div class="user-wallet-name">Bitcoin</div>
+			<div class="user-wallet-icn" data-icn-id="1"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="1">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">15k6mE9Lsb42gNHxTGMtEasLoo3vkmUJNT</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">Bitcoin</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-bitcoin"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-bitcoin", { text: "15k6mE9Lsb42gNHxTGMtEasLoo3vkmUJNT", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="2">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"></div>
+			<div class="user-wallet-name">Ethereum</div>
+			<div class="user-wallet-icn" data-icn-id="2"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="2">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">0x4a22ac10154391Ab4449EEF8551b74E7c7CA5ac5</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">Ethereum (ERC20)</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-eth"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-eth", { text: "0x4a22ac10154391Ab4449EEF8551b74E7c7CA5ac5", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="3">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"></div>
+			<div class="user-wallet-name">Tether</div>
+			<div class="user-wallet-icn" data-icn-id="3"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="3">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">0xD62BAe0A3d1B0001BFc9903eF4d236Db072d0704</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">BNB Smart Chain (BEP20)</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-usdt"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-usdt", { text: "0xD62BAe0A3d1B0001BFc9903eF4d236Db072d0704", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="4">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"></div>
+			<div class="user-wallet-name">Dogecoin</div>
+			<div class="user-wallet-icn" data-icn-id="4"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="4">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">DJ2jKQjXckw474xvemdEzBPg5Q6Bzqfifu</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">dogecoin</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-doge"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-doge", { text: "DJ2jKQjXckw474xvemdEzBPg5Q6Bzqfifu", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="5">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/154.png"></div>
+			<div class="user-wallet-name">Marscoin</div>
+			<div class="user-wallet-icn" data-icn-id="5"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="5">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">MFCPyukFJSDcLcSxa1bruxSjxf1bUqrrGV</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">Marscoin</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-mars"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-mars", { text: "MFCPyukFJSDcLcSxa1bruxSjxf1bUqrrGV", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="6">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/11419.png"></div>
+			<div class="user-wallet-name">Toncoin</div>
+			<div class="user-wallet-icn" data-icn-id="6"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="6">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">EQAgebhhR0er85-vn1S2sAMcNqYiFfZfV6uyMs7EeBkeAGV1</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">The Open Network (TON)</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-ton"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-ton", { text: "EQAgebhhR0er85-vn1S2sAMcNqYiFfZfV6uyMs7EeBkeAGV1", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="7">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/7505.png"></div>
+			<div class="user-wallet-name">Everscale</div>
+			<div class="user-wallet-icn" data-icn-id="7"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="7">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">0:b9a86a007409521f6a04a0ec3ef9767315ea6cd41aa42ea90efaa4093caf421f</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">Everscale</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-ever"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-ever", { text: "0:b9a86a007409521f6a04a0ec3ef9767315ea6cd41aa42ea90efaa4093caf421f", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet" data-id="8">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/3890.png"></div>
+			<div class="user-wallet-name">Polygon</div>
+			<div class="user-wallet-icn" data-icn-id="8"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="8">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">0x190ef8ed6ea1bd7a3dda7f19f635942b7f80574a</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">Polygon</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-polygon"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-polygon", { text: "0x190ef8ed6ea1bd7a3dda7f19f635942b7f80574a", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+		<div class="user-wallet last-child" data-id="9">
+			<div class="user-wallet-icon"><img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1765.png"></div>
+			<div class="user-wallet-name">EOS</div>
+			<div class="user-wallet-icn" data-icn-id="9"><div><span class="material-icons">arrow_forward_ios</span></div></div>
+		</div>
+
+		<div class="user-wallet-content" data-content-id="9">
+			<div class="user-wallet-content-data">
+				<div class="user-wallet-address">
+					<div class="block-title">Address:</div>
+					<div class="wallet-address">marshin.gm</div>
+				</div>
+
+				<div class="user-wallet-network">
+					<div class="block-title">Network:</div>
+					<div class="wallet-network">EOS</div>
+				</div>
+
+				<!-- <div class="user-wallet-note">
+					<div class="block-title">Note:</div>
+					<div class="wallet-note">Choose right Network when send coins to user!</div>
+				</div> -->
+			</div>
+			<div class="user-wallet-qr">
+				
+				<div class="qrcode" id="qrcode-eos"></div>
+				<!-- <div class="qrcode-note">Scan this QR-code with your crypto wallet to send coins to this user</div> -->
+				
+				<script type="text/javascript">
+					new QRCode("qrcode-eos", { text: "marshin.gm", width: 80, height: 80 });
+				</script>
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="footer">
+		<div class="footer-link"><a href="#">About</div>
+		<div class="footer-link"><a href="#">Help</div>
+		<div class="footer-link"><a href="#">Contact</div>
+		<div class="footer-link"><a href="#">Donate</div>
+		<div class="footer-link"><a href="#">GitHub</div>
+	</div>
+
+
+	<!-- Show info about user wallet -->
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+		    $('.user-wallet').click(function() {
+		    	var id = $(this).data('id');
+		    	var contentid = ".user-wallet-content[data-content-id=" + "'" + id + "']";
+		    	var icnid = ".user-wallet-icn[data-icn-id=" + "'" + id + "'] div";
+
+		    	var wid = ".user-wallet[data-id=" + "'" + id + "']";
+
+		    	$(icnid).addClass("icn-rotate");
+
+		    	if ($(contentid).is(':hidden')) {
+
+		    		if ($(wid).find(".last-child")){ 
+		    			$(wid).removeClass("last-child");
+		    			$(wid).attr('data-last', 'open');
+		    			console.log("Deleted!")
+		    		}
+
+		    		$(contentid).slideDown(300);
+
+				} else if ($(contentid).is(':visible')) {
+
+					if ($(wid).find("[data-last='open'")){ 
+		    			$(wid).addClass("last-child");
+		    			$(wid).attr('data-last', 'close');
+		    		}
+
+				  	$(contentid).slideUp(300);
+				  	$(icnid).removeClass("icn-rotate");
+				  	$(icnid).addClass("icn-rotate-zero");
+				  	setTimeout(function(){
+			            $(icnid).removeClass('icn-rotate-zero');
+			    }, 400);
+				}
+			});
+		});
+
+
+	</script>
+
+	<!-- Share Sheet menu -->
+
+	<script type="text/javascript">
+
+		const title = document.title;
+		const url = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href;
+		const shareButton = document.querySelector('.share-button');
+
+		shareButton.addEventListener('click', event => {
+		  if (navigator.share) { 
+		  	navigator.share({
+		  		url: url,
+		  		text: 'You can send me crypto on this crypto addresses',
+		      	title: title
+		    })
+		    .catch(console.error);
+		    } else {
+		        console.log("Device don't support Share Menu")
+		        // Need to make dialog for unsupported devices
+		    }
+		});
+	</script>
+
+	<!-- Copy link to clipboard -->
+
+	<script type="text/javascript">
+		
+		const copyButton = document.querySelector('.copy-button');
+
+		copyButton.addEventListener('click', event => {
+			navigator.clipboard.writeText(window.location.href);
+			console.log("Copied!")
+		});
+
+	</script>
+
+	<!-- Copy user wallet address to clipboard -->
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+		    $('.wallet-address').click(function() {
+		    	console.log($(this).text())
+		    	navigator.clipboard.writeText($(this).text());
+			});
+		});
+
+	</script>
+
+	</div>
+
+</body>
+</html>
