@@ -146,7 +146,7 @@
 	.user-share-link, .user-share-menu{
 		float: left;
 		width: 50%;
-		color: #aaa;
+		color: #777;
 		font-weight: bold;
 		font-size: 14px;
 	}
@@ -311,6 +311,11 @@
 		font-family: 'Roboto Mono', monospace;
 	}
 
+	.wallet-address:hover{
+		cursor: pointer;
+	}
+
+
 	.user-wallet-qr{
 		width: 35%;
 	}
@@ -335,13 +340,12 @@
 
 	.footer{
 		margin-top: 20px;
-		margin-bottom: 50px;
 		margin-left: auto;
 		margin-right: auto;
 		align-items: center;
   		justify-content: center;
 		display: flex;
-		padding:5px;
+		padding: 5px;
 	}
 
 	.footer-link{
@@ -355,7 +359,34 @@
 		font-weight: normal;
 	}
 
-	.footer-link:last-child{
+
+	.footer-link-logo{
+		text-align: center;
+		margin-bottom: 80px;
+	}
+
+	.footer-link-logo a{
+		color: #aaa;
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+
+	.notification{
+		display: none;
+		position: fixed;
+		padding: 10px 20px;
+		text-align: center;
+		background-color: #222;
+		color: #fff;
+		border-radius: 50px;
+		z-index: 1;
+		font-weight: bold;
+		width: 80px;
+		bottom: 30px;
+		left: 50%;
+    	transform: translateX(-50%);
+    	box-shadow: 0px 8px 10px #aaa;
 	}
 
 
@@ -363,10 +394,13 @@
 
 	<div class="app">
 
-	<div class="head">
+	<!-- <div class="head">
 		<div class="logo">crptw.me</div>
-	</div>
+	</div> -->
 
+	<div class="notification">
+		Copied!
+	</div>
 
 	<div class="user-profile">
 		<div class="user-avatar"><img src="https://cdn4.telegram-cdn.org/file/LWRusPAyXlTVDtyaHxvuB3Mtl4e6r6yZ5aWwzVOrxhf-gPdVdOlYp2lA9Y96hWtt_-uAfJxPjTuTn-gg0xU4kv9Q2s04Gxspj38aB6uE1g2QNkxZbq2ZPUBBX3g9_DqujzGy5EpYmdEwr0ApS4OTTTb4ANcRXBsHg5Wm4INWgYVzKFE-yiStAB9r9htHPQGl8HEeWA6q_OYd1eFn7JD98alzKPuchrTkjSg_OgkiRne2V6qGbzo5G1FWwuPlDSwqpOcS93Yx1WTLh01y69LclEzZicXAmQEPY5OR58tnfIRk-xaCDGiPIFztoivH9xQ6Y3Dv8mazCP-S7FCBSVO3Mw.jpg"></div>
@@ -705,6 +739,8 @@
 		<div class="footer-link"><a href="#">GitHub</div>
 	</div>
 
+	<div class="footer-link-logo"><a href="https://crptw.me">crptw.me</div>
+
 
 	<!-- Show info about user wallet -->
 
@@ -780,7 +816,11 @@
 
 		copyButton.addEventListener('click', event => {
 			navigator.clipboard.writeText(window.location.href);
-			console.log("Copied!")
+			$(".notification").show("slideUp", function() {
+				setTimeout(function(){
+					$(".notification").hide("slideDown")
+				}, 3000);
+			});
 		});
 
 	</script>
@@ -793,6 +833,13 @@
 		    $('.wallet-address').click(function() {
 		    	console.log($(this).text())
 		    	navigator.clipboard.writeText($(this).text());
+
+		    	$(".notification").show("slideUp", function() {
+				setTimeout(function(){
+					$(".notification").hide("slideDown")
+				}, 3000);
+			});
+
 			});
 		});
 
