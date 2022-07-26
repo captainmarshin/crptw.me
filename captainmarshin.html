@@ -134,24 +134,24 @@
 	}
 
 	.user-share{
-		margin-top: 20px;
+		margin-top: 15px;
+		align-items: center;
+  		justify-content: center;
+		display: flex;
 	}
 
-	.user-share:after{
-		content: "";
-	  	display: table;
-	  	clear: both;
-	}
-
-	.user-share-link, .user-share-menu{
-		float: left;
-		width: 50%;
+	.user-share-link, .user-share-menu, .user-apple-wallet{
 		color: #777;
 		font-weight: bold;
 		font-size: 14px;
+		box-sizing: border-box;
 	}
 
-	.copy-button:hover, .share-button:hover{
+	.user-share-link, .user-apple-wallet{
+		margin-right: 25px;
+	}
+
+	.copy-button:hover, .share-button:hover, .apple-wallet:hover{
 		cursor: pointer;
 	}
 
@@ -162,6 +162,11 @@
 	}
 
 	.user-share-menu .material-icons{
+		font-size: 15px;
+		vertical-align: -2px;
+	}
+
+	.user-apple-wallet .material-icons{
 		font-size: 15px;
 		vertical-align: -2px;
 	}
@@ -407,6 +412,7 @@
 		<div class="user-name">@captainmarshin</div>
 		<div class="user-share">
 			<div class="user-share-link"><span class="copy-button"><span class="material-icons">content_copy</span> Copy link</span></div>
+			<div class="user-apple-wallet"><span class="apple-wallet"><span class="material-icons">wallet</span> Add to Wallet</span></div>
 			<div class="user-share-menu"><span class="share-button"><span class="material-icons">ios_share</span> Share</span></div>
 		</div>
 	</div>
@@ -840,6 +846,17 @@
 				}, 3000);
 			});
 
+			});
+		});
+
+	</script>
+
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+		    $('.apple-wallet').click(function() {
+		    	window.open('https://crptw.me/pass/captainmarshin_crptw.pkpass', '_blank'); 
 			});
 		});
 
